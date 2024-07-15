@@ -28,7 +28,7 @@ AWS CLI vs. my script
 
 ### raw AWS CLI
 
-takes about 15 minutes (900s)
+takes about 15 minutes (907s)
 
 ```console
 $ \time aws s3 sync --storage-class GLACIER --size-only ./ s3://BUCKET/ --delete --dryrun
@@ -38,7 +38,7 @@ $ \time aws s3 sync --storage-class GLACIER --size-only ./ s3://BUCKET/ --delete
 
 ### my script
 
-takes about 65s
+takes about 63s
 
 ```console
 $ \time poetry run python main.py
