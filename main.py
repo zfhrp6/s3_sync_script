@@ -95,15 +95,16 @@ def compare(remote: list[FileInfo], local: list[FileInfo]) -> tuple[list[FileInf
         if re_idx >= re_count or lo_idx >= lo_count:
             break
 
+        print(re_idx, lo_idx)
+
         re_ = remote[re_idx]
         lo_ = local[lo_idx]
 
         if re_.path == lo_.path:
-            if re_.last_modified >= lo_.last_modified:
-                re_idx += 1
-                lo_idx += 1
-                continue
-            to_be_uploaded.append(lo_)
+            if re_.last_modified < lo_.last_modified:
+                to_be_uploaded.append(lo_)
+            re_idx += 1
+            lo_idx += 1
             continue
 
         if re_.path < lo_.path:
