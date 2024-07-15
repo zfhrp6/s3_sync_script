@@ -125,8 +125,12 @@ def main():
     rf = list(get_s3_file_list(target_dir))
     lf = list(get_local_file_list(target_dir))
     to_be_uploaded, to_be_deleted = compare(rf, lf)
-    print(f'to be uploaded: {to_be_uploaded}')
-    print(f'to be deleted : {to_be_deleted}')
+    print('to be uploaded:')
+    for f in to_be_uploaded:
+        print(f'\t{f}')
+    print('to be deleted :')
+    for f in to_be_deleted:
+        print(f'\t{f}')
 
 
 if __name__ == '__main__':
