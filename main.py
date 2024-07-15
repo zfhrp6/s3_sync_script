@@ -123,17 +123,9 @@ def main():
     target_dir = target_dirs[-1]
     rf = list(get_s3_file_list(target_dir))
     lf = list(get_local_file_list(target_dir))
-    print(list(sorted(rf, key=lambda x: x.path))[:2])
-    print(list(sorted(lf, key=lambda x: x.path))[:2])
-    print('\n\n')
-    print(list(sorted(rf, key=lambda x: x.path))[-2:])
-    print(list(sorted(lf, key=lambda x: x.path))[-2:])
-    print('\n\n')
     to_be_uploaded, to_be_deleted = compare(rf, lf)
     print(f'to be uploaded: {to_be_uploaded}')
     print(f'to be deleted : {to_be_deleted}')
-    # a = input('which? ')
-    # print(f'{a}, {type(a)}')
 
 
 if __name__ == '__main__':
