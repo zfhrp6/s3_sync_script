@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "s3-sync-manually"
+version = "0.1.0"
+description = ""
+authors = ["zfhrp <zfhrp6@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.4"
+
+
+[tool.poetry.group.dev.dependencies]
+boto3 = "^1.34.144"
+boto3-stubs = {extras = ["s3"], version = "^1.34.144"}
+isort = "^5.13.2"
+ruff = "^0.5.2"
+mypy = "^1.10.1"
+pytest = "^8.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
