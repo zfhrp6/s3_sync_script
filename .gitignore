@@ -17,3 +17,6 @@
 
 .venv
 /poetry.toml
+
+.env
+target_dirs.py

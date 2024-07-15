@@ -1,0 +1,23 @@
+from typing import NamedTuple
+
+
+class TargetDir(NamedTuple):
+    bucket: str
+    full_path: str
+    sync_mode: str
+
+    @property
+    def dirname(self) -> str:
+        full = self.full_path
+        while full.endswith('/'):
+            full = full[:-1]
+        return full.split('/')[-1] + '/'
+
+
+target_dirs: tuple[TargetDir] = (
+    TargetDir(
+        bucket='BUCKET_NAME',
+        full_path='/home/user/LOCAL/DIRECTORY',
+        sync_mode='ONEZONE_IA',
+    ),
+)
