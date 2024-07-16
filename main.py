@@ -64,20 +64,20 @@ def get_local_file_list(target_dir: TargetDir) -> Iterable[FileInfo]:
 
 def compare(remote: list[FileInfo], local: list[FileInfo]) -> tuple[list[FileInfo], list[FileInfo]]:
     """
-    ファイルリストを比較して、アップロード・削除する対象をリストアップする。
+    Compare file lists (remote and local), and list files to be uploaded or deleted.
 
-    * アップロードするファイル
-        * ローカルにのみ存在するファイル
-        * ローカルファイルの更新日時がリモートファイルの更新日時より新しいファイル
-    * 削除するファイル
-        * リモートにのみ存在するファイル
+    * Files to be uploaded:
+        * Files that exist only locally
+        * Files where the local file's modification date is newer than the remote file's modification date
+    * Files to be deleted:
+        * Files that exist only remotely
 
     Args:
-        remote: リモートのファイルリスト
-        local: ローカルのファイルリスト
+        remote: The list of remote files
+        local: The list of local files
 
     Returns:
-        (アップロードするファイルのリスト, 削除するファイルのリスト)
+        (List of files to be uploaded, List of files to be deleted)
     """
     to_be_uploaded: list[FileInfo] = []
     to_be_deleted: list[FileInfo] = []
@@ -94,8 +94,6 @@ def compare(remote: list[FileInfo], local: list[FileInfo]) -> tuple[list[FileInf
     while True:
         if re_idx >= re_count or lo_idx >= lo_count:
             break
-
-        print(re_idx, lo_idx)
 
         re_ = remote[re_idx]
         lo_ = local[lo_idx]
