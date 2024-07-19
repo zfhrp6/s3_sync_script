@@ -119,16 +119,17 @@ def compare(remote: list[FileInfo], local: list[FileInfo]) -> tuple[list[FileInf
 
 def main():
     load_dotenv()
-    target_dir = target_dirs[-1]
-    rf = list(get_s3_file_list(target_dir))
-    lf = list(get_local_file_list(target_dir))
-    to_be_uploaded, to_be_deleted = compare(rf, lf)
-    print('to be uploaded:')
-    for f in to_be_uploaded:
-        print(f'\t{f}')
-    print('to be deleted :')
-    for f in to_be_deleted:
-        print(f'\t{f}')
+    for target_dir in target_dirs:
+        print(f'## {target_dir.dirname}')
+        rf = list(get_s3_file_list(target_dir))
+        lf = list(get_local_file_list(target_dir))
+        to_be_uploaded, to_be_deleted = compare(rf, lf)
+        print('to be uploaded:')
+        for f in to_be_uploaded:
+            print(f'\t{f}')
+        print('to be deleted :')
+        for f in to_be_deleted:
+            print(f'\t{f}')
 
 
 if __name__ == '__main__':
